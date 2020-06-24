@@ -1,0 +1,68 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red52\green52\blue52;\red255\green255\blue255;\red83\green83\blue83;
+}
+{\*\expandedcolortbl;;\cssrgb\c26667\c26667\c26667;\cssrgb\c100000\c100000\c100000;\cssrgb\c40000\c40000\c40000;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22800\viewh15440\viewkind0
+\deftab720
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Stop the Apache service\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ sudo service httpd stop\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 \cb3 Remove the current (old) version of Apache\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ sudo yum erase httpd httpd-tools apr apr-util\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 \cb3 Remove the current (old) version of PHP\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $\'a0sudo yum remove php-*\
+\
+$\'a0sudo yum install php56\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 \cb3 After the installation completes, you can check the PHP modules installed against the list you saved during the removal process above by running the following:\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $\'a0yum list installed | grep php\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 \cb3 Before installing any missing modules, I checked the missing modules against the modules that were available in the latest version of PHP by running the following command:\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ yum search php56\
+\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 I matched up the missing modules between the php56 list and those previously installed and issued the command:\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ sudo yum install php56-gd\
+\
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 Now that you\'92re configuration files are set, it\'92s time to restart the services.\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ sudo service httpd start\
+\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f0 \cf2 \cb3 To be certain that you are running the latest versions, run the following:\cb1 \
+\pard\pardeftab720\parhyphenfactor20\partightenfactor0
+
+\f1 \cf4 \cb3 $ php -v\
+$ httpd -v}
