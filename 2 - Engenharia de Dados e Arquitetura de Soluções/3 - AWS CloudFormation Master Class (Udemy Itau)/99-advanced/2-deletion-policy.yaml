@@ -1,4 +1,0 @@
-Resources:
-  myS3Bucket:
-    Type: AWS::S3::Bucket
-    DeletionPolicy: Retain
